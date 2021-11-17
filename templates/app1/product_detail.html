@@ -1,0 +1,26 @@
+{% extends 'layout.html' %} {% load static %} {% block title %}
+Home Page
+{%endblock title %} {% block main %}
+
+
+<section class="">
+    <div class="row row d-flex justify-content-center">
+        <div class="col-md-8  d-flex justify-content-center">
+            <img class="img-fluid img-large" src=" {{product.image.url}} " alt="Card image cap">
+        </div>
+        <div class="col-md-4">
+            <p>
+                Title: {{ product.title }}
+            </p>
+        </div>
+    </div>
+</section>
+
+{% endblock main %}
+{% block javascript %}
+
+<script>
+
+</script>
+
+{% endblock javascript %}

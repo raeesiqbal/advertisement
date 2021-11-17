@@ -1,0 +1,92 @@
+{% extends 'layout.html' %} {% load static %} {% block title %}
+Home Page
+{%endblock title %} {% block main %}
+
+
+<section class="submit-recipe-page-wrap padding-top-74 padding-bottom-50">
+    <div class="container">
+
+        <div class="row row d-flex justify-content-center">
+            <div class="col-md-10">
+                <section class="py-4">
+                    {% for i in products %}
+                    <div class="container mt-3">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="bg-white rounded shadow-sm sidebar-page-right c">
+                                    <div>
+                                        <div class="p-3 border-bottom">
+                                            <h5> Title: {{ i.title }} </h5>
+                                            <p> Url: <a href="{% url "app1:product_detail" i.id %}">{{i.url}}</a> </p>
+
+                                            <div class="row d-flex align-items-center form-group mt-3">
+                                                <div class="col-md-2">
+                                                    <img class="img-fluid img-large" src=" {{i.image.url}} "
+                                                        alt="Card image cap">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card" style="width: 100%;">
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">
+                                                                <div class="row align-items-center">
+                                                                    <p class="col-md-4">
+                                                                        Posted by
+                                                                    </p>
+                                                                    <p class="col-md-8 text-right">
+                                                                        {{ i.user }}
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="row align-items-center">
+                                                                    <p class="col-md-4">
+                                                                        Date
+                                                                    </p>
+                                                                    <p class="col-md-8 text-right">
+                                                                        {{ i.date|date:"M d, Y" }}
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+
+                                                            {% if request.user.is_staff %}
+                                                            <li class="list-group-item">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-md-12">
+                                                                        <a style="font-size=100px"
+                                                                            class="btn btn-primary w-100"
+                                                                            href="http://127.0.0.1:8000/admin/app1/product/{{i.id}}/change/"
+                                                                            role="button">
+                                                                            Edit
+                                                                        </a>
+
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            {% endif %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock main %}
+{% block javascript %}
+
+<script>
+
+</script>
+
+{% endblock javascript %}
